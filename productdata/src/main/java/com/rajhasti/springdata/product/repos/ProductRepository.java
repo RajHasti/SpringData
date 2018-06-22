@@ -9,4 +9,6 @@ import com.rajhasti.springdata.product.entity.Product;
  */
 public interface ProductRepository extends CrudRepository<Product, Integer> {
 
+	
+
 }

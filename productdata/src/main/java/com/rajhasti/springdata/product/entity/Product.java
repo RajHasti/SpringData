@@ -12,11 +12,10 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(schema="mydb.dbo",name="product" )
+@Table(name="product")
 public class Product {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	@Column(name="description")
