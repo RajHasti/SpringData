@@ -9,6 +9,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.rajhasti.springdata.product.entity.Product;
 import com.rajhasti.springdata.product.repos.ProductRepository;
 
+/**
+ * @author rajasekhar_hasti
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ProductdataApplicationTests {
