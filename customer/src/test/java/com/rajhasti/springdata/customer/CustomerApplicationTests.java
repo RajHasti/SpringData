@@ -6,10 +6,13 @@ import static org.junit.Assert.assertNotNull;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.rajhasti.springdata.customer.entity.Customer;
@@ -79,5 +82,11 @@ public class CustomerApplicationTests {
 		List<Customer> customers=repository.findByIdIn(Arrays.asList(2));
 		customers.forEach(c->System.out.println(c.getName()));
 		
+	}
+	@Test
+	@Transactional
+	@Rollback(false)
+	public void testUpdateCustomerByFirstNameAndId() {
+		repository.UpdateCustomerByFirstNameAndId("VikAditya", 1);
 	}
 }
