@@ -3,6 +3,9 @@ package com.rajhasti.springdata.customer;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +14,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.rajhasti.springdata.customer.entity.Customer;
 import com.rajhasti.springdata.customer.repos.CustomerRepository;
-
-
-import ch.qos.logback.core.net.SyslogOutputStream;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -60,5 +60,24 @@ public class CustomerApplicationTests {
 	public void testCount() {
 
 		System.out.println("Total Customers in the systems#"+repository.count() );
+	}
+	
+	@Test
+	public void testFindByCusByNameAndEmail() {
+		List<Customer> customers=repository.findByNameAndEmail("RajHasti", "rajglobe@gmail.com");
+		customers.forEach(c->System.out.println(c.getName()));
+		
+	}
+	@Test
+	public void testFindByPartialEmail() {
+		List<Customer> customers=repository.findByEmailLike("%gmail%");
+		customers.forEach(c->System.out.println(c.getName()));
+		
+	}
+	@Test
+	public void testFindByIdsIn() {
+		List<Customer> customers=repository.findByIdIn(Arrays.asList(2));
+		customers.forEach(c->System.out.println(c.getName()));
+		
 	}
 }
