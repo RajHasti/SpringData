@@ -20,7 +20,9 @@ import ch.qos.logback.core.net.SyslogOutputStream;
 public class CustomerApplicationTests {
 	@Autowired
 	CustomerRepository repository ; 
-	
+	@Test
+	public void contextLoads() {
+	}
 	@Test
 	public void testCreate() {
 		
