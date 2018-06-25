@@ -27,7 +27,7 @@ public class CustomerApplicationTests {
 	public void testCreate() {
 		
 		Customer customer=new Customer();
-		customer.setId(1);
+		//customer.setId(1);
 		customer.setName("RajHasti");
 		customer.setEmail("rajglobe@gmail.com");
 		repository.save(customer);
