@@ -3,6 +3,9 @@ package com.rajhasti.springdata.product;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import org.junit.Test;
@@ -72,4 +75,49 @@ public class ProductdataApplicationTests {
 		System.out.println("Count ----->" + repository.count());
 	}
 
+
+	@Test
+	public void testFindByName() {
+	
+		List<Product> products = repository.findByName("IWatch");
+		products.forEach(p -> System.out.println(p.getPrice()));
+
+		List<Product> products1 = repository.findByName("IWatch");
+		products1.forEach(p -> System.out.println(p.getPrice()));
+	}
+	@Test
+	public void testFindByNameAndDesc() {
+		List<Product> products = repository.findByNameAndDesc("tv", "samsung");
+		products.forEach(p -> System.out.println(p.getDesc()));
+		products.forEach(p -> System.out.println(p.getPrice()));
+	}
+	@Test
+	public void testFindByPriceGreaterthan() {
+		List<Product> products = repository.findByPriceGreaterThan(1000d);
+		products.forEach(p -> System.out.println(p.getName()));
+		products.forEach(p -> System.out.println(p.getPrice()));
+	}
+	@Test
+	public void testFindByDesc() {
+		List<Product> products = repository.findByDescContains("dell");
+		products.forEach(p -> System.out.println(p.getPrice()));
+	}
+	@Test
+	public void testFindByPriceBetween() {
+		List<Product> products = repository.findByPriceBetween(1000d, 5000d);
+		products.forEach(p -> System.out.println(p.getName()));
+	
+	}
+	@Test
+	public void testFindByDescLike() {
+		List<Product> products = repository.findByDescLike("%de%");
+		products.forEach(p -> System.out.println(p.getName()));
+	
+	}
+	@Test
+	public void testFindByIdIn() {
+		List<Product> products = repository.findByIdIn(Arrays.asList(1,2,4));
+		products.forEach(p -> System.out.println(p.getName()));
+	
+	}
 }
