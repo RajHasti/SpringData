@@ -1,5 +1,6 @@
 package com.rajhasti.springdata.customer.entity;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,14 @@ public class Customer {
 	private int id;
 	private String name;
 	private String email;
+	@Embedded
+	private Address address;
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	public int getId() {
 		return id;
 	}
@@ -33,7 +42,7 @@ public class Customer {
 	}
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", name=" + name + ", email=" + email + "]";
+		return "Customer [id=" + id + ", name=" + name + ", email=" + email + ", address=" + address + "]";
 	}
 	public Customer() {}
 	public Customer(int id, String name, String email) {
