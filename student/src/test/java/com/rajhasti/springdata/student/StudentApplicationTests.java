@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -27,6 +29,9 @@ public class StudentApplicationTests {
 		repository.save(new Student("Raj", "Hasti", 70));
 		repository.save(new Student("Vikram", "Aditya", 90));
 		repository.save(new Student("Rajini", "Konduru", 90));
+		repository.save(new Student("Aryan", "N", 70));
+		repository.save(new Student("Srithan", "N", 90));
+		repository.save(new Student("Tanvi", "P", 90));
 		System.out.println("Student created successfully");
 
 	}
@@ -34,7 +39,7 @@ public class StudentApplicationTests {
 	@Test
 	public void testFindAllStudents() {
 
-		System.out.println(repository.findAllStudents());
+		System.out.println(repository.findAllStudents(new PageRequest(1, 2)));
 	}
 
 	@Test
@@ -63,5 +68,26 @@ public class StudentApplicationTests {
 	@Rollback(false)
 	public void deleteStudByFirstName() {
 		repository.deleteStudByFirstName("Raj");
+	}
+
+	@Test
+	public void testFindAllStudentsNQ() {
+
+		System.out.println(repository.findAllStudentNQ());
+	}
+	
+	@Test
+	public void testFindByFirstNameNQ() {
+		System.out.println(repository.findAllByFirstNameNQ("Raj"));
+	}
+	
+	@Test
+	public void testFindByPartialDataNQ() {
+	
+		List<Object[]> partialData = repository.findAllStudentsPartialDataNQ();
+		for (Object[] objects : partialData) {
+			System.out.println(objects[0]);
+			System.out.println(objects[1]);
+		}
 	}
 }
