@@ -12,6 +12,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -88,5 +91,10 @@ public class CustomerApplicationTests {
 	@Rollback(false)
 	public void testUpdateCustomerByFirstNameAndId() {
 		repository.UpdateCustomerByFirstNameAndId("VikAditya", 1);
+	}
+	
+	@Test
+	public void testFindAllCustomers() {
+	    System.out.println(repository.findAllCustomers(new PageRequest(1, 2,Direction.DESC,"name")));
 	}
 }
