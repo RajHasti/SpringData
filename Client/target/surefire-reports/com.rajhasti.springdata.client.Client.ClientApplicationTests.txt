@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.rajhasti.springdata.client.Client.ClientApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.067 s - in com.rajhasti.springdata.client.Client.ClientApplicationTests
